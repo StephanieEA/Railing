@@ -1,0 +1,39 @@
+h1
+  | Listing Users
+table
+  thead
+    tr
+      th
+        | First Name
+      th
+        | Last Name
+      th
+        | Email
+      th
+        | Roles
+      th
+      th
+  tbody
+    - @users.each do |user|
+      tr
+        td
+          = user.first_name
+        td
+          = user.last_name
+        td
+          = link_to user.email, impersonate_admin_user_path(user)
+        td
+          select
+            - User.valid_roles.each do |role|
+              option
+                = role
+            end
+        td
+          = link_to 'Save', purple_admin_users_path(user)
+        td
+          = link_to 'Show', user
+        td
+          = link_to 'Edit', edit_user_path(user)
+        td
+          = link_to 'Destroy', user, data: { confirm: 'Are you sure?' }, method: :destroy
+br
