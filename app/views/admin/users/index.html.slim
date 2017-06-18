@@ -23,10 +23,14 @@ table
         td
           = link_to user.email, impersonate_admin_user_path(user)
         td
-          select
             - User.valid_roles.each do |role|
-              option
-                = role
+              - if user.roles.include? role
+                  input type="checkbox" checked=true
+                    = role
+              - else
+                  input type="checkbox"
+                      = role
+              end
             end
         td
           = link_to 'Save', purple_admin_users_path(user)

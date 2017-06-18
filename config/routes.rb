@@ -19,6 +19,7 @@ Rails.application.routes.draw do
         get 'stop_impersonating'
       end
 
+# here because I was comparing the routes in this file to what I see w/bin/rails routes
       collection do
         post 'purple'
       end

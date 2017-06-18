@@ -1,7 +1,7 @@
 module Admin
   class UsersController < AdminController
     include Api
-    include V1
+    # include V1
     skip_before_action :require_admin!, only: [:stop_impersonating]
     respond_to :html, :json
 
@@ -25,11 +25,10 @@ module Admin
     end
 
     def purple #might not matter
-      puts 'there'
+      puts 'user: #{@user}'
     end
 
     def show
-      testing
       puts 'put on a show'
     end
 

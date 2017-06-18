@@ -11,7 +11,7 @@ module Api
       def show
         @user = User.find(params[:id])
         respond_with(@user)
-        puts 'showing'
+        puts 'user: #{@user}'
       end
 
       def testing
