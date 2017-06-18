@@ -21,23 +21,17 @@ table
         td
           = user.last_name
         td
-          = link_to user.email, impersonate_admin_user_path(user)
+          = link_to user.email, impersonate_admin_u ser_path(user)
         td
             - User.valid_roles.each do |role|
               - if user.roles.include? role
-                  input type="checkbox" checked=true
+                  input.role_attr data={id: user.id, role: role} type="checkbox" checked=true
                     = role
               - else
-                  input type="checkbox"
-                      = role
+                  input.role_attr data={id: user.id, role: role} type="checkbox"
+                    = role
               end
             end
-        td
-          = link_to 'Save', purple_admin_users_path(user)
-        td
-          = link_to 'Show', user
-        td
-          = link_to 'Edit', edit_user_path(user)
         td
           = link_to 'Destroy', user, data: { confirm: 'Are you sure?' }, method: :destroy
 br

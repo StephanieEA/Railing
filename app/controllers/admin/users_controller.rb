@@ -24,12 +24,14 @@ module Admin
       redirect_to admin_users_path
     end
 
-    def purple #might not matter
-      puts 'user: #{@user}'
+    def edit
+      @user = User.find(params[:id])
+      redirect_to admin_users_path
     end
 
-    def show
-      puts 'put on a show'
+    def update
+      user = User.find(params[:id])
+      puts 'updating'
     end
 
     def delete

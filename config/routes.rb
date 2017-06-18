@@ -19,10 +19,13 @@ Rails.application.routes.draw do
         get 'stop_impersonating'
       end
 
-# here because I was comparing the routes in this file to what I see w/bin/rails routes
-      collection do
-        post 'purple'
+      member do
+        get 'edit'
       end
+# here because I was comparing the routes in this file to what I see w/bin/rails routes
+      # collection do
+      #   post 'purple'
+      # end
     end
   end
 

@@ -5,17 +5,13 @@ module Api
       respond_to :json
 
       def index
-        respond_with(User.all)
+        render :json => User.all
       end
 
       def show
         @user = User.find(params[:id])
         respond_with(@user)
         puts 'user: #{@user}'
-      end
-
-      def testing
-        puts 'testing'
       end
 
       def create
@@ -32,11 +28,18 @@ module Api
 
       def update
         @user = User.find(params[:id])
+        new_role = params[:roles_mask]
 
-        if @user.update_attributes(user_params)
+        if new_role
+          # binding.pry
+          @user.update_attributes(roles_mask: new_role)
           respond_with(@user)
         else
-          respond_with_errors(@user)
+          if @user.update_attributes(user_params)
+            respond_with(@user)
+          else
+            respond_with_errors(@user)
+          end
         end
       end
 

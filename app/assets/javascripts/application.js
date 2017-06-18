@@ -17,3 +17,33 @@
 // ... your other scripts here ...
 //
 //= require turbolinks
+
+$(document).ready(function() {
+  $(".role_attr").on('change', function(e) {
+    var rolesMatch = { admin: 1, nurse: 2 };
+    var rolesMask = rolesMatch[e.target.dataset.role];
+    var userId = e.target.dataset.id;
+
+    var removeRoles = !this.checked ? true : false;
+
+    if (removeRoles) {
+      rolesMask = 0;
+    }
+
+    $.ajax({
+      url: '/api/v1/users/' + userId,
+      type: 'PATCH',
+      data: {
+        id: userId,
+        roles_mask: rolesMask
+      },
+      success: function(res) {
+        console.log(res);
+        location.reload();
+      },
+      error: function(err) {
+        console.log(err);
+      }
+    });
+  });
+})
