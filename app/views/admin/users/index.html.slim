@@ -21,7 +21,7 @@ table
         td
           = user.last_name
         td
-          = link_to user.email, impersonate_admin_u ser_path(user)
+          = link_to user.email, impersonate_admin_user_path(user)
         td
             - User.valid_roles.each do |role|
               - if user.roles.include? role
