@@ -11,7 +11,6 @@ module Api
       def show
         @user = User.find(params[:id])
         respond_with(@user)
-        puts 'user: #{@user}'
       end
 
       def create
@@ -31,7 +30,6 @@ module Api
         new_role = params[:roles_mask]
 
         if new_role
-          # binding.pry
           @user.update_attributes(roles_mask: new_role)
           respond_with(@user)
         else

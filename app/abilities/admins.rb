@@ -1,3 +1,3 @@
 Canard::Abilities.for(:admin) do
-  can [:destroy, :update], User
+  can [:destroy], User
 end

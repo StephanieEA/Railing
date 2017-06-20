@@ -24,20 +24,6 @@ module Admin
       redirect_to admin_users_path
     end
 
-    def edit
-      @user = User.find(params[:id])
-      redirect_to admin_users_path
-    end
-
-    def update
-      user = User.find(params[:id])
-      puts 'updating'
-    end
-
-    def delete
-
-    end
-
     private
 
     def track_impersonation(user, status)
